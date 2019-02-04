@@ -56,7 +56,7 @@ class Connection
      * @param callable callback
      * @return self
      */
-    public function __construct(string $dsn, string $user, string $password, array $options = null, $callback = null)
+    public function __construct(string $dsn, string $user = null, string $password = null, array $options = null, callable $callback = null)
     {
         $this->dsn = $dsn;
         $this->user = $user;
@@ -99,7 +99,7 @@ class Connection
      * @param array params
      * @param \PDOStatement
      */
-    public function query($sql, $params = [])
+    public function query(string $sql, array $params = [])
     {
         $this->connect();
         $this->pdo->beginTransaction();

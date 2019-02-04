@@ -3,10 +3,13 @@
 namespace Morphable;
 
 use \Morphable\SimpleDatabase\Connection;
-use \Morphable\SimpleDatabase\Builder;
+use \Morphable\SimpleDatabase\QueryBuilder;
 
 class SimpleDatabase
 {
+    /**
+     * @var \Morphable\SimpleDatabase\Connection
+     */
     private $connection;
 
     /**
@@ -17,29 +20,32 @@ class SimpleDatabase
      * @param callable callback
      * @return self
      */
-    public function __construct(string $dsn, string $user = 'root', string $password = '', $options = null, $callback = null)
+    public function __construct(string $dsn, string $user = null, string $password = null, $options = null, $callback = null)
     {
         $this->connection = new Connection($dsn, $user, $password, $options, $callback);
     }
 
     /**
      * Execute raw query
-     *
+     * @param string sql
+     * @param mixed params
      * @return \PDOStatement
      */
-    public function query(string $sql, array $params = [])
+    public function query(string $query, $params = [])
     {
-        return $this->connection->query($sql, $params);
+        if (!is_array($params)) $params = [$params];
+
+        return $this->connection->query($query, $params);
     }
 
     /**
      * Create a new builder
      *
      * @param string table name
-     * @return \Morphable\SimpleDatabase\Builder
+     * @return \Morphable\SimpleDatabase\QueryBuilder
      */
-    public function getBuilder(string $table)
+    public function builder(string $table)
     {
-        return new Builder($table);
+        return new QueryBuilder($this->connection, $table);
     }
 }
