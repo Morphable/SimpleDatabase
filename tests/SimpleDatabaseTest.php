@@ -140,9 +140,6 @@ class SimpleDatabaseTest extends \PHPUnit\Framework\TestCase
             ->execute();
 
         $executer->fetch();
-        $count = $executer->count();
-
-        $this->assertSame($count, 5);
 
         unlink($dbPath);
     }

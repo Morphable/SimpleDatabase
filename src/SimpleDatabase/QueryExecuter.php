@@ -21,6 +21,7 @@ class QueryExecuter
      */
     public function __construct(Connection $connection, string $query, array $prepares = [])
     {
+        $this->connection = $connection;
         $this->stmt = $this->connection->query($query, $prepares);
     }
 
