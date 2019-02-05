@@ -58,11 +58,21 @@ class QueryGenerator
                 break;
         }
 
-        if ($this->builder->joins) $sql .= "INNER JOIN {$this->builder->joins} ";
-        if ($this->builder->where) $sql .= "WHERE {$this->builder->where} ";
-        if ($this->builder->orderBy) $sql .= "ORDER BY {$this->builder->orderBy} ";
-        if ($this->builder->limit) $sql .= "LIMIT {$this->builder->limit} ";
-        if ($this->builder->offset) $sql .= "OFFSET {$this->builder->offset} ";
+        if ($this->builder->joins) {
+            $sql .= "INNER JOIN {$this->builder->joins} ";
+        }
+        if ($this->builder->where) {
+            $sql .= "WHERE {$this->builder->where} ";
+        }
+        if ($this->builder->orderBy) {
+            $sql .= "ORDER BY {$this->builder->orderBy} ";
+        }
+        if ($this->builder->limit) {
+            $sql .= "LIMIT {$this->builder->limit} ";
+        }
+        if ($this->builder->offset) {
+            $sql .= "OFFSET {$this->builder->offset} ";
+        }
 
         return $sql;
     }

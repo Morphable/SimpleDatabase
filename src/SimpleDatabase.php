@@ -33,7 +33,9 @@ class SimpleDatabase
      */
     public function query(string $query, $params = [])
     {
-        if (!is_array($params)) $params = [$params];
+        if (!is_array($params)) {
+            $params = [$params];
+        }
 
         return $this->connection->query($query, $params);
     }

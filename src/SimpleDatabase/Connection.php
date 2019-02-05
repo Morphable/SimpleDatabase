@@ -79,7 +79,9 @@ class Connection
      */
     private function connect()
     {
-        if ($this->pdo != null) return $this;
+        if ($this->pdo != null) {
+            return $this;
+        }
 
         try {
             $this->pdo = new PDO($this->dsn, $this->user, $this->password, $this->options);

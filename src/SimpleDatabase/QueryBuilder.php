@@ -230,7 +230,9 @@ class QueryBuilder
      */
     private function build()
     {
-        if ($this->query != null) return $this;
+        if ($this->query != null) {
+            return $this;
+        }
 
         if (in_array($this->type, [self::UPDATE, self::DELETE]) && $this->where == null) {
             throw new Exception("Update or delete query without where??");

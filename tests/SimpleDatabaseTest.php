@@ -74,7 +74,10 @@ class SimpleDatabaseTest extends \PHPUnit\Framework\TestCase
     public function testSimpleDatabaseConnection()
     {
         $dbPath = __DIR__ . '/data/test.db';
-        unlink($dbPath);
+
+        if (file_exists($dbPath)) {
+            unlink($dbPath);
+        }
 
         $db = new SimpleDatabase("sqlite:$dbPath", null, null, null, function ($e) {
             die("error has occured " . $e->getMessage());
@@ -141,6 +144,8 @@ class SimpleDatabaseTest extends \PHPUnit\Framework\TestCase
 
         $executer->fetch();
 
-        unlink($dbPath);
+        if (file_exists($dbPath)) {
+            unlink($dbPath);
+        }
     }
 }
