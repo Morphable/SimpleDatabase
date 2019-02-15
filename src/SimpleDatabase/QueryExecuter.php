@@ -14,6 +14,11 @@ class QueryExecuter
     private $stmt;
 
     /**
+     * @var \Morphable\SimpleDatabase\Connection
+     */
+    private $connection;
+
+    /**
      * @param \Morphable\SimpleDatabase\Connection $connection
      * @param string $query
      * @param array $prepares
@@ -54,7 +59,7 @@ class QueryExecuter
      */
     public function getLastInsertId()
     {
-        return $this->connection->lastInsertId();
+        return $this->connection->getPdo()->lastInsertId();
     }
 
     /**

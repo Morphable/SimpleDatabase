@@ -50,4 +50,9 @@ class SimpleDatabase
     {
         return new QueryBuilder($this->connection, $table);
     }
+
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
 }
