@@ -217,7 +217,7 @@ class QueryBuilder
      * @param mixed params
      * @return self
      */
-    public function join(string $join, $params = [])
+    public function join(string $joins, $params = [])
     {
         $this->setParams($params);
         $this->joins = $joins;
