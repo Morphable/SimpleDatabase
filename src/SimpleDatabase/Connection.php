@@ -120,4 +120,9 @@ class Connection
 
         return $stmt;
     }
+
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
 }
